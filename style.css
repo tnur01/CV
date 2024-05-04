@@ -205,19 +205,23 @@ body {
 
 /* Gaya tambahan untuk header dalam container saat mode gelap */
 .dark-mode .container .header {
-    background-color: #222;
+    background-color: #333;
+    color: #ddd;
+}
+
+.dark-mode .container .header p {
     color: #ddd;
 }
 
 /* Gaya tambahan untuk navigasi dalam container saat mode gelap */
 .dark-mode .container .site-nav {
-    background-color: #222;
+    background-color: #333;
     color: #ddd;
 }
 
 /* Gaya tambahan untuk div dengan kelas container saat mode gelap */
 .dark-mode .container .section {
-    background-color: #222;
+    background-color: #333;
     color: #ddd;
     position: relative;
     overflow: hidden;
@@ -240,13 +244,3 @@ body {
     color: #007bff;
 }
 
-/* Gaya tambahan untuk ikon mode gelap */
-.dark-mode .nav-link i {
-    color: #fff;
-    transition: color 0.3s;
-}
-
-/* Gaya tambahan untuk ikon mode gelap saat dihover */
-.dark-mode .nav-link:hover i {
-    color: #007bff;
-}
