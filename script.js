@@ -1,9 +1,15 @@
-// Fungsi untuk menampilkan gambar saat elemen diklik
+// Fungsi untuk menampilkan modal saat sertifikat diklik
 function showCertificate(imagePath) {
     var modal = document.getElementById("imageModal");
     var modalImg = document.getElementById("modalImage");
-    modal.style.display = "block";
+    modal.style.display = "flex";
     modalImg.src = imagePath;
+}
+
+// Fungsi untuk menutup modal
+function closeModal() {
+    var modal = document.getElementById("imageModal");
+    modal.style.display = "none";
 }
 
 // Tambahkan event listener untuk setiap elemen sertifikat
@@ -39,13 +45,7 @@ document.getElementById("cert8").addEventListener("click", function () {
     showCertificate("ser8.jpg");
 });
 
-// Fungsi untuk menutup modal
-function closeModal() {
-    var modal = document.getElementById("imageModal");
-    modal.style.display = "none";
-}
-
-// Tambahkan event listener untuk tombol close
+// Tambahkan event listener untuk menutup modal saat tombol close diklik
 document.getElementById("imageModal").getElementsByClassName("close")[0].addEventListener("click", function() {
     closeModal();
 });
@@ -58,10 +58,50 @@ window.addEventListener("click", function(event) {
     }
 });
 
-// Fungsi untuk mengaktifkan mode gelap atau terang
+// Fungsi untuk mengaktifkan mode gelap
+function enableDarkMode() {
+    document.body.classList.add("dark-mode");
+}
+
+// Fungsi untuk menonaktifkan mode gelap
+function disableDarkMode() {
+    document.body.classList.remove("dark-mode");
+}
+
+// Fungsi untuk beralih antara mode gelap dan terang
 function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
-    var modeIcon = document.getElementById("modeIcon");
-    modeIcon.classList.toggle("bx-sun");
-    modeIcon.classList.toggle("bx-moon");
+    if (document.body.classList.contains("dark-mode")) {
+        disableDarkMode();
+    } else {
+        enableDarkMode();
+    }
+}
+
+// Fungsi untuk menampilkan/menyembunyikan daftar navigasi saat tombol hamburger menu diklik
+function toggleNav() {
+    var sidebarNav = document.getElementById("sidebarNav");
+    sidebarNav.classList.toggle("active");
+}
+
+// Fungsi untuk mengaktifkan mode gelap
+function enableDarkMode() {
+    document.body.classList.add("dark-mode");
+    document.getElementById("modeIcon").classList.remove("bx-sun");
+    document.getElementById("modeIcon").classList.add("bx-moon");
+}
+
+// Fungsi untuk menonaktifkan mode gelap
+function disableDarkMode() {
+    document.body.classList.remove("dark-mode");
+    document.getElementById("modeIcon").classList.remove("bx-moon");
+    document.getElementById("modeIcon").classList.add("bx-sun");
+}
+
+// Fungsi untuk beralih antara mode gelap dan terang
+function toggleDarkMode() {
+    if (document.body.classList.contains("dark-mode")) {
+        disableDarkMode();
+    } else {
+        enableDarkMode();
+    }
 }
