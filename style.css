@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
 
+/* Gaya umum */
 * {
     font-family: 'Nunito', sans-serif;
     box-sizing: border-box;
@@ -19,31 +20,46 @@ body {
     border-radius: 10px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     overflow: hidden; 
+    position: relative; /* Tambahkan ini untuk menempatkan ikon mode di atas */
 }
 
-.header {
+/* Ikon mode dark/light */
+.mode-switcher {
+    position: absolute;
+    top: 10px; /* Atur posisi dari atas */
+    right: 10px; /* Atur posisi dari kanan */
+}
+
+.mode-switcher button {
+    background: none;
+    border: none;
+    transition: color 0.3s;
+    font-size: 32px; /* Ubah ukuran ikon */
+    cursor: pointer;
+}
+
+/* Gaya untuk header dan sidebar */
+.header,
+.sidebar,
+.site-nav {
     padding: 20px;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s;
     margin-bottom: 30px;
 }
 
-.header-content {
-    display: flex;
-    align-items: center;
+/* Gaya untuk header */
+.header {
+    text-align: center;
 }
 
 .header img {
     margin-right: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-.header-text {
-    flex: 1;
-    text-align: center;
+    border-radius: 10px; /* Sudut foto ditumpulkan */
+    width: 100px; /* Lebar foto */
+    height: auto; /* Tinggi disesuaikan agar proporsional */
 }
 
 .header h1 {
@@ -57,29 +73,78 @@ body {
     font-size: 16px;
 }
 
-.section {
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s;
+.dark-mode .header-text p {
+    color: #fff;
 }
 
+/* Gaya untuk sidebar */
+.sidebar {
+    width: 250px;
+    float: left;
+    margin-right: 20px;
+    position: sticky;
+    top: 20px;
+    height: 100vh; /* Tinggi sidebar mengikuti tinggi viewport */
+    overflow-y: auto; /* Menampilkan scrollbar hanya jika kontennya melebihi tinggi viewport */
+}
+
+.sidebar-header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.sidebar-header img {
+    width: 100%; /* Foto penuh lebar */
+    max-width: 100px; /* Maksimum lebar foto */
+    border-radius: 10px; /* Sudut foto ditumpulkan */
+}
+
+.sidebar-header h1 {
+    margin-top: 10px;
+    color: #007bff;
+}
+
+.sidebar {
+    width: 250px;
+    float: left;
+    margin-right: 20px;
+    position: sticky;
+    top: 20px;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 10px;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 10px;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s; /* Tambahkan transisi warna */
+}
+
+.sidebar-nav a:hover {
+    color: #007bff; /* Warna teks saat hover */
+}
+
+/* Gaya untuk site navigation */
 .site-nav {
-    margin-bottom: 30px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s;
+    text-align: center;
+    margin-top: 20px; /* Atur jarak antara sidebar dan navigasi situs */
 }
 
 .nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 
 .nav-item {
@@ -104,6 +169,7 @@ body {
 }
 
 .header:hover,
+.sidebar:hover,
 .site-nav:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
@@ -112,34 +178,142 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.section h2 {
-    text-align: center;
-    color: #007bff;
+/* Gaya tambahan untuk mode gelap */
+.dark-mode {
+    background-color: #333;
+    color: #ddd;
 }
 
-.list {
-    padding-left: 20px;
+/* Gaya tambahan untuk sidebar-nav saat mode gelap */
+.dark-mode .sidebar-nav a {
+    color: #ddd; /* Warna teks */
 }
 
-.list li {
-    margin-bottom: 10px;
+/* Gaya tambahan untuk sidebar-nav saat mode gelap saat dihover */
+.dark-mode .sidebar-nav a:hover {
+    color: #007bff; /* Warna teks saat hover */
 }
 
-a {
-    color: #007bff;
-    text-decoration: none;
+.dark-mode .container,
+.dark-mode .sidebar,
+.dark-mode .site-nav {
+    background-color: #222;
+    color: #ddd;
+    box-shadow: 0 0 10px #333;
+}
+
+.dark-mode .header,
+.dark-mode .section {
+    background-color: #333;
+    color: #ddd; /* Ubah warna teks jika diperlukan */
+}
+
+/* Gaya tambahan untuk ikon mode gelap */
+.dark-mode .mode-switcher button i {
+    color: #fff;
     transition: color 0.3s;
 }
 
-a:hover {
-    color: #0056b3;
+.dark-mode .mode-switcher button:hover i {
+    color: #007bff;
 }
 
+/* Gaya tambahan untuk judul h2 */
+.section h2 {
+    text-align: center; /* Judul terpusat */
+    color: #007bff; /* Warna judul */
+}
+
+/* Gaya responsif untuk tablet/hp */
+@media screen and (max-width: 768px) {
+    .container {
+        max-width: 100%; /* Container menjadi penuh lebar */
+        border-radius: 0; /* Menghapus border-radius pada tampilan responsif */
+    }
+
+    .sidebar,
+    .content {
+        width: 100%; /* Sidebar, konten, dan navigasi menjadi penuh lebar */
+        float: none; /* Sidebar tidak mengambang lagi */
+        margin: 0; /* Menghapus margin untuk tampilan responsif */
+    }
+
+    .sidebar {
+        width: 100%; /* Sidebar menjadi penuh lebar */
+        float: none; /* Sidebar tidak mengambang lagi */
+        position: relative; /* Mengubah posisi kembali ke relatif */
+        top: auto; /* Menghapus nilai top */
+    }
+
+    .site-nav {
+        margin-top: 20px; /* Atur jarak antara sidebar dan navigasi situs */
+    }
+}
+
+/* Gaya tambahan untuk tombol hamburger menu */
+.hamburger-menu {
+    display: none; /* Sembunyikan tombol hamburger menu secara default */
+    cursor: pointer;
+    padding: 10px;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Tampilkan tombol hamburger menu saat mode responsif */
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: block; /* Tampilkan tombol hamburger menu */
+    }
+
+    .sidebar-nav {
+        display: none; /* Sembunyikan daftar navigasi secara default */
+    }
+
+    .sidebar-nav.active {
+        display: block; /* Tampilkan daftar navigasi saat tombol hamburger menu diklik */
+    }
+}
+
+
+/* Gaya tambahan untuk judul h2 pada tampilan responsif */
+.section h2 {
+    text-align: center; /* Judul terpusat */
+    color: #007bff; /* Warna judul */
+    margin-bottom: 20px; /* Atur jarak antara judul dan konten */
+}
+
+
+/* Menyesuaikan jarak antara div dengan kelas section dan header */
+.section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+/* Padding untuk list di dalam section */
+.section ul {
+    padding-left: 20px;
+}
+
+/* Padding untuk list di dalam list */
+.section ul ul {
+    padding-left: 20px;
+}
+
+/* CSS untuk Modal */
 .modal {
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
@@ -151,96 +325,30 @@ a:hover {
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 700px;
+    max-width: 800px;
+    max-height: 80%;
 }
 
+/* CSS untuk menengahkan gambar dalam modal */
+.modal-content img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* CSS untuk menutup modal */
 .close {
     color: #fff;
     position: absolute;
-    top: 15px;
-    right: 35px;
-    font-size: 40px;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
     font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.listp {
-    padding-left: 20px;
-}
-
-.listp li {
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-#about p {
-    text-align: justify;
-}
-
-/* CSS untuk mode terang */
-body {
-    background-color: #fff;
-    color: #333;
-}
-
-.dark-mode {
-    font-size: 16px; /* Ukuran font di mode gelap, bisa disesuaikan */
-    background-color: #333; /* Warna latar belakang mode gelap */
-    color: #ddd; /* Warna teks mode gelap */
-}
-
-/* Gaya tambahan untuk konten dalam container saat mode gelap */
-.dark-mode .container {
-    background-color: #222;
-    color: #ddd;
-}
-
-/* Gaya tambahan untuk header dalam container saat mode gelap */
-.dark-mode .container .header {
-    background-color: #333;
-    color: #ddd;
-}
-
-.dark-mode .container .header p {
-    color: #ddd;
-}
-
-/* Gaya tambahan untuk navigasi dalam container saat mode gelap */
-.dark-mode .container .site-nav {
-    background-color: #333;
-    color: #ddd;
-}
-
-/* Gaya tambahan untuk div dengan kelas container saat mode gelap */
-.dark-mode .container .section {
-    background-color: #333;
-    color: #ddd;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Gaya tambahan untuk div dengan kelas section, header, dan site-nav saat mode gelap */
-.dark-mode .container .section, .dark-mode .container .header, .dark-mode .container .site-nav {
-    box-shadow: 0 0 10px #333; /* Box shadow warna gelap */
-    transition: box-shadow 0.3s; /* Transisi untuk efek perubahan */
-}
-
-/* Gaya tambahan untuk ikon mode gelap */
-.dark-mode .nav-link i {
-    color: #fff;
     transition: color 0.3s;
+    cursor: pointer;
 }
 
-/* Gaya tambahan untuk ikon mode gelap saat dihover */
-.dark-mode .nav-link:hover i {
-    color: #007bff;
+.close:hover {
+    color: #bbb;
 }
-
