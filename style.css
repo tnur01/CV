@@ -125,13 +125,20 @@ body {
 
 .sidebar-nav a {
     display: block;
-    padding: 10px;
+    padding: 5px 10px; /* Ubah padding sesuai kebutuhan */
     color: #000;
     text-decoration: none;
-    transition: color 0.3s; /* Tambahkan transisi warna */
+    transition: color 0.3s;
+    line-height: 1.5; /* Ubah nilai line-height sesuai kebutuhan */
 }
 
+/* Efek hover pada link di sidebar */
 .sidebar-nav a:hover {
+    color: #007bff; /* Warna teks saat hover */
+}
+
+/* Efek hover pada link di navigasi situs */
+.nav-link:hover {
     color: #007bff; /* Warna teks saat hover */
 }
 
@@ -171,7 +178,7 @@ body {
 .header:hover,
 .sidebar:hover,
 .site-nav:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .section:hover {
@@ -257,6 +264,23 @@ body {
     padding: 10px;
 }
 
+/* Animasi untuk tombol hamburger menu */
+.hamburger-menu .bar {
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
+}
+
 .bar {
     width: 30px;
     height: 3px;
@@ -297,6 +321,14 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.section.animated {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Padding untuk list di dalam section */
@@ -351,4 +383,66 @@ body {
 
 .close:hover {
     color: #bbb;
+}
+
+/* Animasi untuk setiap bagian saat di-scroll */
+.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gaya tambahan untuk animasi saat scrolling ke atas */
+.animated.up {
+    animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gaya untuk submenu */
+.sub-section {
+    display: none; /* Submenu defaultnya disembunyikan */
+    position: absolute; /* Posisi absolut untuk menindih container */
+    top: 0; /* Mengatur submenu di atas tombol "Pengalaman" */
+    left: 120px; /* Mengatur submenu ke kanan tombol "Pengalaman" */
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    color: #333; /* Warna teks submenu */
+}
+
+/* Tampilkan submenu saat kelas show ditambahkan */
+.sub-section.show {
+    display: block;
+}
+
+/* Gaya untuk tombol "Pengalaman" */
+.sidebar-nav ul li:nth-child(3) {
+    position: relative; /* Memberi posisi relatif agar submenu dapat ditempatkan secara absolut */
+}
+
+/* Gaya tambahan untuk tautan di submenu */
+.sub-section a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Efek hover pada tautan submenu */
+.sub-section a:hover {
+    color: #007bff;
+}
+
+/* Gaya tambahan untuk mode gelap */
+.dark-mode .sub-section {
+    background-color: #222; /* Warna latar belakang submenu saat mode gelap */
+    color: #ddd; /* Warna teks submenu saat mode gelap */
 }
